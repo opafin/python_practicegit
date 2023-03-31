@@ -1,6 +1,5 @@
 import random
 
-
 def blackjack():
     from art import blackjack_logo
     print(blackjack_logo)
