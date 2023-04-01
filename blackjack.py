@@ -1,6 +1,7 @@
 import random
 import os
 
+# os is just used to clear the screen at line 17. The code is copy/paste ready to play! Thank you for having a look.
 
 def blackjack():
 
