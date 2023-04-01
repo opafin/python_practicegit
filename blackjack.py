@@ -1,7 +1,7 @@
 import random
 import os
 
-# os is just used to clear the screen at line 17. The code is copy/paste ready to play! Thank you for having a look.
+# os is used to clear the screen at line 23. The code is copy/paste ready to play! Thank you for having a look.
 
 def blackjack():
 
@@ -18,6 +18,7 @@ def blackjack():
         # 'nt' stands for Microsoft "New Technology", the name has been in use since 1994
         # 'posix' is the name used for Unix-based operating systems like Linux.
         # here are the commands for clearing the console in Windows and in Linux terminals. :)
+        
         if os.name == 'nt':
             os.system('cls')
         elif os.name == 'posix':
