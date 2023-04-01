@@ -13,7 +13,15 @@ def blackjack():
         hand[ace] = 1
 
     def draw_the_table():
-        os.system('cls')
+
+        # 'nt' stands for Microsoft "New Technology", the name has been in use since 1994
+        # 'posix' is the name used for Unix-based operating systems like Linux.
+        # here are the commands for clearing the console in Windows and in Linux terminals. :)
+        if os.name == 'nt':
+            os.system('cls')
+        elif os.name == 'posix':
+            os.system('clear')
+
         print(table)
         print(your_hand)
         print(sum(your_hand))
