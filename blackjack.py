@@ -1,8 +1,8 @@
 import random
+import os
+
 
 def blackjack():
-    from art import blackjack_logo
-    print(blackjack_logo)
 
     def draw_cards_to(hand):
         cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -13,8 +13,7 @@ def blackjack():
         hand[ace] = 1
 
     def draw_the_table():
-        # print(sum(dealers_hand)
-        # print(dealers_hand)
+        os.system('cls')
         print(table)
         print(your_hand)
         print(sum(your_hand))
@@ -49,8 +48,6 @@ def blackjack():
 
     def end_scenario():
         draw_the_table()
-        if sum(your_hand) == 21:
-            print("A Blackjack!!")
         while sum(dealers_hand) < 17:
             draw_cards_to(dealers_hand)
             if sum(dealers_hand) > 21 and 11 in dealers_hand:
@@ -79,6 +76,10 @@ def blackjack():
         else:
             print("You lost!")
 
+    print(blackjack_logo)
+    indentation = '           '
+    input(f"{indentation} A Warm Welcome! Hit enter to play!")
+
     dealers_hand = []
     draw_cards_to(dealers_hand)
 
@@ -87,7 +88,52 @@ def blackjack():
     your_hand = []
     while len(your_hand) < 2:
         draw_cards_to(your_hand)
+    if sum(your_hand) == 21:
+        print("**A Blackjack!!**")
 
     choose_actions()
     end_scenario()
     calculate_score()
+
+
+python_logo = """ 
+                     @#################@
+                  @####@@@@@########"#####@
+                @##########################@
+                @##########################@
+          @@@@@@@@@@@@@@@@@@###########@@@@@@@@@@
+        @######################@,,,,,,,,,,,,,,,,,,@
+      @#######################@,,,,,,,,,,,,,,,,,,,,@
+      @######################@@,,,,,,,,,,,,,,,,,,,,,@
+      @############@@@@@@@@@,,,,,,,,,,,,,,,,,,,,,,,,@
+       @##########@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        #########@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+            @@@@@@@@@,,,,,,,,,,@@@@@@@@@@@@@@@@@
+                @,,,,,,,,,,,,,,,,,,,,,,,,,,@
+                @,,,,,,,,,,,,,,,,,,,,,,,,,,@
+                 @,,,,,,,,,,,,,@@@@@,,,,,,@
+                   @,,,,,,,,,,,,,,,,,,,,@
+"""
+
+blackjack_logo = """            
+
+  ______ _            _    _            _                    
+  | ___ \ |          | |  (_)          | |                   
+  | |_/ / | __ _  ___| | ___  __ _  ___| | __    _ __  _   _ 
+  | ___ \ |/ _` |/ __| |/ / |/ _` |/ __| |/ /   | '_ \| | | |
+  | |_/ / | (_| | (__|   <| | (_| | (__|   <   _| |_) | |_| |
+  \____/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\ (_) .__/ \__, |
+                         _/ |                   | |     __/ |
+                        |__/                    |_|    |___/  
+                        
+                      .------.     
+                      |A_  _ |     
+                      |( \/ ).-----.
+                      | \  /|K /\  |  
+                      |  \/ | /  \ | 
+                      `-----| \  / | 
+                            |  \/ K|                
+                            `------'                            
+                                                                                    
+"""
+blackjack()
