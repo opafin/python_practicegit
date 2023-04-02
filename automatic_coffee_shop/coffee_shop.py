@@ -2,7 +2,7 @@ import os
 
 def coffee_shop():
 
-    from coffee_data import MENU, resources, coin_types, units, cost
+    from coffee_dicts import MENU, resources, coin_types, units, cost
 
     def calculate_coins(coin_list):
         coin_list = list(map(int, coin_list))
@@ -28,8 +28,7 @@ def coffee_shop():
     def get_report():
         os.system('cls')
         for item in resources:
-            print(
-                f"{item}: {resources[item]} {units[item]} ")
+            print(f"{item}: {resources[item]} {units[item]} ")
         input("done viewing?")
         ai_service()
 
@@ -95,12 +94,10 @@ def coffee_shop():
                     successfull_transaction(ingredient, choice)
                     break
                 else:
-                    print(
-                        f"that's {round(total_value - cost[choice], 2)} $ short, do you have some more coins?")
+                    print(f"that's {round(total_value - cost[choice], 2)} $ short, do you have some more coins?")
 
         if transaction_completed == False and total_coins:
-            print(
-                f"bummer, that's not enough, here are your coins: {round((total_value), 2)}")
+            print(f"bummer, that's not enough, here are your coins: {round((total_value), 2)}")
         elif transaction_completed == False:
             print("\nyou have got to insert some coins, buddy")
 
