@@ -68,8 +68,7 @@ def coffee_shop():
             order_more()
 
         for coin in coin_types:
-            coin = input(
-                f"insert {coin}, or just hit enter\n")
+            coin = input(f"insert {coin}, or just hit enter\n")
             if coin == 'report':
                 answer = input(
                     "why do you want a report now? just get your coffee!")
@@ -81,8 +80,7 @@ def coffee_shop():
                 total_coins.append(coin)
                 total_value = calculate_coins(total_coins)
                 os.system('cls')
-                print(
-                    f"you've inserted a total of {round(total_value, 2)} $")
+                print(f"you've inserted a total of {round(total_value, 2)} $")
                 if total_value == cost[choice]:
                     print(f"that's exactly what's needed for {choice}")
                 elif total_value > cost[choice]:
