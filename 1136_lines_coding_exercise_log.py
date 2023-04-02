@@ -36,6 +36,10 @@ def main():
     calculator = Calculator()  # object-oriented-test
     calculator.run()  # object-oriented-test
     blackjack()
+    number_guessing()
+    debug_practice()
+    higher_lower()
+    coffee_shop()
 
 
 def bury_the_treasure():
