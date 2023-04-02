@@ -841,5 +841,295 @@ def blackjack():
     calculate_score()
 
 
+def number_guessing():
+
+    from art import number_guessing_logo
+    print(number_guessing_logo)
+    secret_num = random.randint(1, 100)
+    difficulty = [20, 15, 10, 5]
+    print("Welcome to GUESS 1-100!")
+    print("\nChoose the difficulty!")
+    print("send 0 for easy: 20 guesses")
+    print("send 1 for medium: 15 guesses")
+    print("send 2 for hard: 10 guesses")
+    print("send 3 for very hard: 5 guesses, yikes!")
+    choice = int(input("\nsend 0,1,2 or 3!\n"))
+    lives = difficulty[choice]
+    for i in range(0, lives):
+        print(f"lives left: {lives - i}")
+        guess = int(input("out of 1-100, guess which number i've picked!\n"))
+        if secret_num == guess:
+            print("that's right, good job!!")
+            break
+        elif secret_num > guess:
+            print("nope, higher!")
+        elif secret_num < guess:
+            print("nope, lower!")
+    if guess != secret_num:
+        print("bummer!")
+    if input("Play again? y|n") == 'y':
+        number_guessing()
+
+
+def debug_practice():
+
+    # the problem is that the range function starts and stops at -1 of the given values. so 0 and 19 here
+    def my_function():
+        for i in range(1, 21):  # fixed
+            if i == 20:
+                print("You got it")
+    my_function()
+
+    # Reproduce the Bug, the randint range was set at 1-6, but it works dissimilarly to the range function
+    from random import randint
+    dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
+    dice_num = randint(0, 5)
+    print(dice_imgs[dice_num])
+
+    # the code was missing a = sign, and ignored the year 1994
+    year = int(input("What's your year of birth?"))
+    if year > 1980 and year < 1994:
+        print("You are a millenial.")
+    elif year >= 1994:
+        print("You are a Gen Z.")
+
+    # the code was missing an (f"string) int("string") and an indentation
+    age = int(input("How old are you?"))
+    if age > 18:
+        print(f"You can drive at age {age}.")
+
+    # the == is a comparison operator, it needed to be switched into =
+    pages = 0
+    word_per_page = 0
+    pages = int(input("Number of pages: "))
+    word_per_page = int(input("Number of words per page: "))
+    total_words = pages * word_per_page
+    print(total_words)
+
+    # there was an issue with the code's indentation, making the list receive only a single append
+    def mutate(a_list):
+        b_list = []
+        for item in a_list:
+            new_item = item * 2
+            b_list.append(new_item)
+        print(b_list)
+
+    mutate([1, 2, 3, 5, 8, 13])
+
+
+def higher_lower():
+
+    from higher_lower_game_data import data
+    from art import higher_lower_vs
+    from art import higher_lower_logo
+
+    def print_stats(ig_star, stats=None, stat_removal=None):
+        """input ig_star_data, prints ['name', 'follower_count', 'description', 'country']  
+        Optional param1: stats 
+            specify which stats to include with a string or a list of strings, the rest won't be printed. 
+        Optional param2: stat_removal 
+            specify which stat to remove with a string or a list of strings, and print the rest.
+            e.g 'no_follower_count'"""
+
+        check = {
+            'no_follower_count': 'follower_count',
+            'no_name': 'name',
+            'no_description': 'description',
+            'no_country': 'country'}
+
+        if stats == None:
+            stats = list(check.values())
+
+        if stat_removal != None:
+            for item in check:
+                if item in stat_removal:
+                    stats.remove(check[item])
+        for item in stats:
+            print(ig_star[item], " ", end='')
+
+        print()
+
+    def game_screen():
+        print_stats(ig_star_one, stat_removal='no_follower_count')
+        print(higher_lower_vs)
+        print()
+        print_stats(ig_star_two, stat_removal='no_follower_count')
+        print("-----------")
+
+    print(higher_lower_logo)
+    play = ''
+    score = [0]
+    while play == '':
+        ig_star_one = data[random.randint(0, len(data)-1)]
+        ig_star_two = data[random.randint(0, len(data)-1)]
+        while ig_star_two == ig_star_one:
+            ig_star_two = data[random.randint(1, len(data) - 1)]
+
+        game_screen()
+
+        choice = input(
+            "\nWhich one has the higher follower count? send 1 or 2: ")
+
+        os.system('cls')
+        if os.name == 'posix':
+            os.system('clear')
+
+        print("*--------------------------------------*")
+        print_stats(ig_star_one, ['name', 'follower_count'])
+        print_stats(ig_star_two, ['name', 'follower_count'])
+
+        win_condition_one = choice == '1' and ig_star_one[
+            'follower_count'] > ig_star_two['follower_count']
+        win_condition_two = choice == '2' and ig_star_one[
+            'follower_count'] < ig_star_two['follower_count']
+
+        if win_condition_one or win_condition_two:
+
+            if math.fabs(float(ig_star_one['follower_count'] - ig_star_two['follower_count'])) < 10:
+                score.append(50)
+            else:
+                score.append(10)
+            print("*--------------------------------------*")
+            print(f"you got it! {score[-1]} points!")
+            print(f"your current score is {sum(score)}")
+            print("*--------------------------------------*")
+            play = input(
+                "ready for the next pair? hit enter to continue, or send n to quit\n\n\n")
+            os.system('cls')
+        else:
+            if math.fabs(float(ig_star_one['follower_count'] - ig_star_two['follower_count'])) > 20:
+                pop_count = 2
+            else:
+                pop_count = 1
+            if sum(score) > 0:
+                print("*--------------------------------------*")
+                print(f"\nbummer! you had {sum(score)} points.")
+
+                if len(score) - pop_count > 0:
+                    for i in range(0, pop_count):
+                        print(f"**pop**you lost {score.pop()} points")
+                else:
+                    score.clear()
+
+                print(f"now you have {sum(score)}")
+                print("*--------------------------------------*")
+            else:
+                print("bummer!")
+            play = input(
+                "\nhit enter to continue, or send n to quit\n\n\n")
+            os.system('cls')
+            if os.name == 'posix':
+                os.system('clear')
+
+
+def coffee_shop():
+
+    from coffee_data import MENU, resources, coin_types, units, cost
+
+    def calculate_coins(coin_list):
+        coin_list = list(map(int, coin_list))
+        coin_value = [0.25, 0.10, 0.05, 0.01]
+        for i in range(0, len(coin_list)):
+            coin_list[i] = coin_list[i] * coin_value[i]
+        return (sum(coin_list))
+
+    def manage_resources(ingredient):
+
+        for item in ingredient:
+            if ingredient[item] > resources[item]:
+                print("* internal screech *")
+                return False
+        return True
+
+    def successfull_transaction(ingredient, choice):
+        for item in ingredient:
+            resources[item] -= ingredient[item]
+        resources['money'] += cost[choice]
+        return
+
+    def get_report():
+        os.system('cls')
+        for item in resources:
+            print(
+                f"{item}: {resources[item]} {units[item]} ")
+        input("done viewing?")
+        ai_service()
+
+    def order_more():
+        more = input("more coffee? y|n\n")
+        if more == 'report':
+            get_report()
+        if more == 'y':
+            ai_service()
+        else:
+            exit()
+
+    def ai_service():
+
+        total_coins = []
+        transaction_completed = False
+
+        os.system('cls')
+        print("**Welcome to the coffee shop!**")
+        print()
+        for index, item in enumerate(MENU):
+            print(f"{index} {item}, {cost[item]} $")
+        print()
+
+        request = input("what would you like? (0, 1, 2): ")
+        if request == 'report':
+            get_report()
+        else:
+            choice = list(MENU)[int(request)]
+            ingredient = MENU[choice]
+
+        os.system('cls')
+        if manage_resources(ingredient):
+            print(f"{cost[choice]} $ for {choice} please\n")
+        else:
+            print("Sorry we've ran out of ingredients!\n")
+            order_more()
+
+        for coin in coin_types:
+            coin = input(
+                f"insert {coin}, or just hit enter\n")
+            if coin == 'report':
+                answer = input(
+                    "why do you want a report now? just get your coffee!")
+                if answer == 'report':
+                    get_report()
+                else:
+                    ai_service()
+            if coin != '':
+                total_coins.append(coin)
+                total_value = calculate_coins(total_coins)
+                os.system('cls')
+                print(
+                    f"you've inserted a total of {round(total_value, 2)} $")
+                if total_value == cost[choice]:
+                    print(f"that's exactly what's needed for {choice}")
+                elif total_value > cost[choice]:
+                    overhead = total_value - cost[choice]
+                    print(f"that's {overhead} $ over, here's your change")
+                if total_value == cost[choice] or total_value > cost[choice]:
+                    print("Enjoy your coffee!")
+                    transaction_completed = True
+                    successfull_transaction(ingredient, choice)
+                    break
+                else:
+                    print(
+                        f"that's {round(total_value - cost[choice], 2)} $ short, do you have some more coins?")
+
+        if transaction_completed == False and total_coins:
+            print(
+                f"bummer, that's not enough, here are your coins: {round((total_value), 2)}")
+        elif transaction_completed == False:
+            print("\nyou have got to insert some coins, buddy")
+
+        order_more()
+
+    ai_service()
+
+
 if __name__ == "__main__":
     main()
