@@ -7,6 +7,8 @@ import math
 
 # Hello! this is an exercise log to show effort at a glance.
 # For effect, have a scroll through faster than the eye can see  :)
+# or what I like to do during 5min breaks, is hitting ctrl+scroll backwards to zoom out, and view the effort.
+# it's a nice breather before going at it again. 
 
 def main():
 
