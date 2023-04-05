@@ -43,6 +43,7 @@ def main():
     debug_practice()
     higher_lower()
     coffee_shop()
+    testing_image_processing()
 
 
 def bury_the_treasure():
@@ -1131,6 +1132,137 @@ def coffee_shop():
         order_more()
 
     ai_service()
+
+def testing_image_processing():
+    import colorgram
+    from PIL import Image, ImageFilter
+
+    img = Image.open("turtleart2.png")
+    img = img.filter(ImageFilter.GaussianBlur(radius=1))
+    img.save("image_antialiased2.jpg")
+
+    colors = colorgram.extract('fengzhu.jpg', 30)
+    color_list = []
+    for i in range(0, len(colors)):
+        lets_color = colors[i]
+        color_set = [lets_color.rgb.r, lets_color.rgb.maxsize, lets_color.rgb.g]
+        color_list.append(color_set)
+    print(color_list)
+
+    for _ in range(1,100):
+        random_color = []
+        for i in range(3):
+            random_color.append(random.randint(0,255))
+        # draw.pencolor(random_color)
+        # draw.circle(100)
+        # draw.right(10)
+
+def testing_drawing_libraries():
+
+    FULL_CIRCLE = 360
+    square = 4
+
+    def print_row():
+        for i in range(10):
+            color_list = [
+                [28, 33, 41],
+                [74, 78, 100],
+                [21, 32, 29],
+                [25, 19, 27],
+                [73, 118, 104],
+                [118, 187, 164],
+                [130, 136, 170],
+                [87, 63, 100],
+                [50, 53, 74],
+                [104, 97, 151],
+                [63, 38, 76],
+                [174, 238, 223],
+                [195, 221, 230],
+                [18, 17, 15],
+                [121, 72, 156],
+                [98, 149, 139],
+                [146, 106, 175],
+                [158, 162, 215],
+                [47, 75, 71],
+                [151, 223, 206],
+                [93, 164, 132],
+                [181, 125, 216],
+                [231, 186, 221],
+                [46, 84, 65],
+                [154, 231, 197],
+                [84, 82, 80]
+            ]
+
+    # def turn_left():
+    #     draw.dot(random.randint(minsize, maxsize))
+    #     draw.left(90)
+    #     draw.forward(distance)
+    #     draw.left(90)
+
+
+    # def turn_right():
+    #     draw.dot(random.randint(minsize, maxsize))
+    #     draw.right(90)
+    #     draw.forward(distance)
+    #     draw.right(90)
+
+    multiplier = 0.24
+    base = [150, 470]
+    minsize = int(multiplier * base[0])
+    maxsize = int(multiplier * base[1])
+    distance = 120
+
+
+    # for i in range(10):
+    #     count_of_sides = square + i
+    #     for i in range(count_of_sides):
+            # draw.pencolor(random.randint(1,256),random.randint(1,256),random.randint(1,256))
+            # draw.forward(50)
+            # draw.right(FULL_CIRCLE / count_of_sides)
+            # draw.forward(50)
+
+    # for _ in range(200):
+    #     random_color = []
+    #     for i in range(3):
+    #         random_color.append(random.randint(0,255))
+    #     draw.pencolor(random_color)
+    #     draw.forward(30)
+    #     draw.setheading(random.choice(directions))
+    #     draw.forward(30)
+    # ---------------------------------------
+
+    # screen = Screen()
+    # screen.colormode()
+    # screen.colormode(255)
+    # screen.tracer(8,25)
+    # screen.setup(2560, 1440)
+    # draw = t()
+    # draw.color("black")
+    # draw.hideturtle()
+    # draw.penup()
+    # draw.pensize(20)
+    # draw.speed(0)
+    # draw.pencolor(random.choice(color_list))
+    # draw.dot(random.randint(minsize, maxsize))
+    # draw.forward(distance)
+
+    # def set_starting_position():
+    #     draw.right(90)
+    #     draw.forward(500)
+    #     draw.left(270)
+    #     draw.forward(500)
+    #     draw.left(180)
+
+
+    # set_starting_position()
+    # for i in range(5):
+    #     print_row()
+    #     turn_left()
+    #     print_row()
+    #     turn_right()
+
+    # screen.exitonclick()
+    # directions = [0, 90, 180, 270]
 
 if __name__ == "__main__":
     main()
