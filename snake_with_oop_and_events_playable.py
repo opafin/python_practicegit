@@ -2,6 +2,7 @@ from turtle import Screen, Turtle as GameObject
 import random
 import time
 
+#Hey and welcome. Feel free to test the game out. It reminds me of the legendary Nokia 3310.  
 
 class Snake:
     def __init__(self) -> None:
