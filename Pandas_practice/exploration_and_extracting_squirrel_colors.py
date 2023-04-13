@@ -36,7 +36,7 @@ import pandas
 # print(f"Mondays temperature in fahrenheit: {fahreinheit_conversion(int(monday.temp.item()))}")
 
 # data_dict = {
-#     "students": ["Geralt", "Ciri", "Eskiel"],
+#     "students": ["Geralt", "Ciri", "Eskel"],
 #     "scores": [80, 90, 70]
 # }
 # print(data_dict)
