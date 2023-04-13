@@ -37,7 +37,7 @@ import pandas
 
 # data_dict = {
 #     "students": ["Geralt", "Ciri", "Eskiel"],
-#     "scores": [69, 69, 69]
+#     "scores": [80, 90, 70]
 # }
 # print(data_dict)
 # student_data = pandas.DataFrame(data_dict)
