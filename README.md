@@ -1,8 +1,10 @@
+# Python
+
 Python is a wonderful general purpose language for any kind of development, and particularily good for tool scripting, data-analysis and AI-development.
 
 # A recent tool I'm excited about:
 
-Technologies: Anki, Autohotkey, Python: PIL, WIN32Clipboard
+Technologies used: Anki, Autohotkey, Python: PIL, WIN32Clipboard
 
 - Automatically darkening(inverting) screencaptured images on the clipboard by pressing a hotkey e.g. Win+Shift+A
 - Why - easily creating study cards that can be viewed in the evening.
