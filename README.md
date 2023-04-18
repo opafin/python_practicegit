@@ -1,6 +1,6 @@
 # Python
 
-Python is a wonderful general purpose language for any kind of development, particularily for tool scripting, data-analysis and AI-development.
+Python is a wonderful general purpose language for any kind of development, particularly for tool scripting, data-analysis and AI-development.
 
 # A recent tool I'm excited about:
 
